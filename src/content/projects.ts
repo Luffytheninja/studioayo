@@ -1,0 +1,136 @@
+import { Project } from '@/types';
+
+export const PROJECTS: Project[] = [
+  {
+    slug: 'ountodun',
+    title: 'Ountodun',
+    year: '2025',
+    categories: ['Visual Identity', 'Shopify Design'],
+    credits: [
+      { role: 'Designs', person: 'Ayo' },
+      { role: 'Illustrations', person: 'Alex' },
+    ],
+    thumbnail: '/media/images/ountodun-thumbnail.png',
+    bannerImage: '/media/images/ountodun-banner.png',
+    description: 'A contemporary luxury concept store identity and Shopify e-commerce experience celebrating African craftsmanship and modern elegance.',
+    overview: 'Some detailed case studies showing how we go about designing your products, from research, to ideation, design and presentation.',
+    client: 'Ountodun Concept Store',
+    typography: {
+      logoFontName: 'CANOBIS',
+      secondaryFontName: 'Wavehaus',
+      logoFontUsage: 'Logo and Brand Name Only',
+      secondaryFontUsage: 'Taglines, body text (Light & Book weights)',
+      imagePath: '/media/images/ountodun-typography.png',
+    },
+    colorPalette: [
+      { hex: '#EC7320', name: 'Terracotta Warm' },
+      { hex: '#841400', name: 'Deep Crimson' },
+      { hex: '#FDD6B3', name: 'Alabaster Silk' },
+    ],
+    galleryImages: [
+      '/media/images/ountodun-banner.png',
+      '/media/images/ountodun-shopping-bag.png',
+      '/media/images/ountodun-color-palette.png',
+      '/media/images/ountodun-typography.png',
+    ],
+    review: {
+      quote: 'Studio Ayo elevated our concept store into a global luxury benchmark. The brand identity and Shopify experience captured our heritage with unmatched sophistication.',
+      author: 'Ountodun Leadership',
+      title: 'Founder & Creative Lead',
+    },
+  },
+  {
+    slug: 'natural-american-spirit',
+    title: 'Natural American Spirit',
+    year: '2026',
+    categories: ['3D Modeling', '3D Animation'],
+    credits: [
+      { role: '3D Model', person: 'Mosa' },
+      { role: '3D Animation', person: 'Mosa' },
+    ],
+    thumbnail: '/media/images/natural-american-spirit-thumbnail.png',
+    videoUrl: '/media/videos/natural-american-spirit.mkv',
+    description: 'Hyper-realistic 3D product modeling, tactile material exploration, and dynamic motion study.',
+    overview: 'An exploration into physical material simulation, high-fidelity lighting, and photorealistic spatial rendering for premium product showcases.',
+    client: 'Natural American Spirit',
+    galleryImages: [
+      '/media/images/natural-american-spirit-thumbnail.png',
+    ],
+    review: {
+      quote: 'The 3D craftsmanship and material render quality produced by Mosa and Studio Ayo was beyond immaculate.',
+      author: 'Brand Design Director',
+      title: 'Product Marketing',
+    },
+  },
+  {
+    slug: 'a-century-flame',
+    title: 'A Century Flame',
+    year: '2024 - 2026',
+    categories: ['Visual Identity', 'Web Design', 'Web Development'],
+    credits: [
+      { role: 'Designs', person: 'Lanre' },
+      { role: 'Web Design & Dev', person: 'Ayo' },
+    ],
+    thumbnail: '/media/images/a-century-flame-thumbnail.png',
+    videoUrl: '/media/videos/a-century-flame-website.mp4',
+    description: 'An archival streetwear & heritage fashion house web platform with immersive kinetic typography and editorial layouts.',
+    overview: 'Designing an editorial digital home for A Century Flame fashion collection, merging high-contrast black & white imagery with fluid kinetic web interactions.',
+    client: 'A Century Flame',
+    galleryImages: [
+      '/media/images/a-century-flame-thumbnail.png',
+    ],
+    review: {
+      quote: 'Studio Ayo built a digital gallery experience that matched the soul of our clothing collection.',
+      author: 'Lanre',
+      title: 'Creative Director',
+    },
+  },
+  {
+    slug: 'hachi',
+    title: 'Hachi',
+    year: '2026',
+    categories: ['Visual Identity', 'Web App Design', 'Web App Development'],
+    credits: [
+      { role: 'Designs', person: 'Lanre & Ayo' },
+      { role: 'Web Design & Dev', person: 'Ayo' },
+    ],
+    thumbnail: '/media/images/hachi-thumbnail.png',
+    description: 'A revolutionary fintech & digital banking mobile web application with custom retro-futuristic identity.',
+    overview: 'Crafting the brand design system, UI design language, and high-performance Web App UI for Hachi.',
+    client: 'Hachi Technologies',
+    galleryImages: [
+      '/media/images/hachi-home-screen.png',
+      '/media/images/hachi-login-screen.png',
+      '/media/images/hachi-sign-in-screen.png',
+      '/media/images/hachi-splash-screen.png',
+      '/media/images/hachi-splash-screen-2.png',
+    ],
+    review: {
+      quote: 'Hachi went from concept to a stunning high-converting digital banking app interface thanks to Studio Ayo.',
+      author: 'Hachi Product Lead',
+      title: 'VP of Product',
+    },
+  },
+  {
+    slug: 'faem',
+    title: 'Faem',
+    year: '2026',
+    categories: ['Web Design', 'Web Development'],
+    credits: [
+      { role: 'Web Design & Dev', person: 'Ayo' },
+    ],
+    thumbnail: '/media/images/faem-thumbnail.png',
+    videoUrl: '/media/videos/faem.mp4',
+    description: 'Immersive digital universe for FAËM — an underground sound studio and artist collective website.',
+    overview: 'Welcome to FAËM\'s Universe. A digital space thoughtfully curated and designed to offer an immersive dark studio experience.',
+    client: 'FAËM Records',
+    galleryImages: [
+      '/media/images/faem-thumbnail.png',
+    ],
+    review: {
+      quote: 'The website instantly set our universe apart from every traditional record label.',
+      author: 'FAËM Management',
+      title: 'Studio Director',
+    },
+  },
+];

@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Instrument+Serif:ital@0;1&family=Danfo&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-dark: #070708;
+    --bg-dark-card: #121214;
+    --text-primary: #F4F1EA;
+    --text-muted: #9E9C98;
+    --border-dark: rgba(244, 241, 234, 0.12);
+    --accent-red: #FF4D4D;
+    --accent-green: #25D366;
+    --accent-blue: #3897F0;
+
+    --font-brand: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+    --font-logo: 'Dando', 'Hanken Grotesk', system-ui, sans-serif;
+    --font-editorial: 'Instrument Serif', Georgia, serif;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-brand);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  ::selection {
+    background-color: #F4F1EA;
+    color: #070708;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+/* ─── Glassmorphism Utilities ─── */
+.glass-nav {
+  background: rgba(18, 18, 20, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(244, 241, 234, 0.15);
+}
+
+.glass-nav-light {
+  background: rgba(240, 235, 225, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(28, 18, 12, 0.15);
+}
+
+.glass-card {
+  background: rgba(18, 18, 20, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(244, 241, 234, 0.08);
+}
+
+/* ─── Typography ─── */
+.font-brand {
+  font-family: var(--font-brand);
+  letter-spacing: -0.02em;
+}
+
+.font-logo {
+  font-family: var(--font-logo);
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+  font-style: italic;
+}
+
+/* ─── Vignette ─── */
+.vignette {
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070708;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #252528;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #404045;
+}
+
+/* ─── Hero Canvas ─── */
+.hero-canvas-container canvas {
+  display: block;
+}
+
+/* ─── Underline Hover Animation ─── */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ─── Cursor hidden on mobile ─── */
+@media (hover: none) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Marquee Animation ─── */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  animation: marquee 35s linear infinite;
+  width: max-content;
+}
