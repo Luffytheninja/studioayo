@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { createPortal } from 'react-dom';
+import { X } from 'lucide-react';
 import {
   PEEP_ITEMS,
   PeepItem,
@@ -197,6 +198,7 @@ function InteractiveHeadline({ onEnter, onLeave }: HeadlineProps) {
 /* ─── Main overlay ───────────────────────────────────────────────────────── */
 export default function HeroOverlay() {
   const [activeItem, setActiveItem] = useState<PeepItem | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const cursorPos = useSmoothCursor();
 
   const handleEnter = useCallback((item: PeepItem) => setActiveItem(item), []);
@@ -242,8 +244,8 @@ export default function HeroOverlay() {
           <InteractiveHeadline onEnter={handleEnter} onLeave={handleLeave} />
         </motion.h1>
 
-        {/* ── Pill Nav ── */}
-        <motion.div variants={itemVariants}>
+        {/* ── Pill Nav (Desktop) ── */}
+        <motion.div variants={itemVariants} className="hidden md:block">
           <nav
             className="pointer-events-auto flex items-center gap-1 px-5 py-3 rounded-full glass-nav border border-[#F4F1EA]/20 shadow-[0_10px_40px_rgba(0,0,0,0.6)]"
             aria-label="Hero Navigation"
@@ -259,6 +261,17 @@ export default function HeroOverlay() {
               </Link>
             ))}
           </nav>
+        </motion.div>
+
+        {/* ── View More Button (Mobile Only) ── */}
+        <motion.div variants={itemVariants} className="md:hidden">
+          <button
+            onClick={() => setMenuOpen(true)}
+            className="pointer-events-auto px-6 py-2.5 text-sm font-medium tracking-wide text-[#F4F1EA]/90 hover:text-[#F4F1EA] transition-all duration-200 rounded-full glass-nav border border-[#F4F1EA]/20 shadow-[0_10px_40px_rgba(0,0,0,0.6)] hover:bg-white/10 active:scale-95"
+            data-cursor-text="View Menu"
+          >
+            View More
+          </button>
         </motion.div>
       </div>
 
@@ -283,6 +296,87 @@ export default function HeroOverlay() {
           Privacy Policy
         </Link>
       </motion.div>
+
+      {/* ── Fullscreen Mobile Menu Overlay ── */}
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {menuOpen && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.35, ease: 'easeInOut' }}
+                className="fixed inset-0 z-50 flex flex-col justify-between p-8 pointer-events-auto select-none bg-[#070708]/98 backdrop-blur-2xl"
+              >
+                {/* Header: Logo & Close Button */}
+                <div className="flex items-center justify-between">
+                  <div className="relative h-8 w-36">
+                    <Image
+                      src="/media/images/studio-ayo-logo-white.png"
+                      alt="Studio Ayo"
+                      fill
+                      className="object-contain object-left"
+                      priority
+                    />
+                  </div>
+                  <button
+                    onClick={() => setMenuOpen(false)}
+                    className="w-10 h-10 rounded-full flex items-center justify-center border border-[#F4F1EA]/10 hover:border-[#F4F1EA]/30 bg-[#F4F1EA]/5 hover:bg-[#F4F1EA]/10 transition-all duration-200 cursor-pointer active:scale-90"
+                    aria-label="Close menu"
+                  >
+                    <X className="w-5 h-5 text-[#F4F1EA]" />
+                  </button>
+                </div>
+
+                {/* Menu Links */}
+                <div className="flex flex-col gap-6 my-auto pl-4">
+                  {NAV_ITEMS.map((item, index) => (
+                    <motion.div
+                      key={item.href}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 30 }}
+                      transition={{
+                        duration: 0.45,
+                        delay: index * 0.08,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                    >
+                      <Link
+                        href={item.href}
+                        onClick={() => setMenuOpen(false)}
+                        className="text-4xl sm:text-5xl font-light tracking-wide text-[#F4F1EA]/90 hover:text-[#FF4D4D] transition-colors duration-200 block"
+                        style={{ fontFamily: "'Hanken Grotesk', system-ui, sans-serif" }}
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Footer / Socials */}
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 border-t border-[#F4F1EA]/10 pt-8 text-xs font-mono text-[#F4F1EA]/50 tracking-wider">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-[10px] text-[#F4F1EA]/30 uppercase tracking-widest">Get in touch</span>
+                    <a href="mailto:sayhello@studioayo.com" className="text-[#F4F1EA] hover:text-[#FF4D4D] transition-colors text-sm">
+                      sayhello@studioayo.com
+                    </a>
+                  </div>
+                  <div className="flex gap-4">
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#F4F1EA] transition-colors">
+                      TWITTER
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#F4F1EA] transition-colors">
+                      INSTAGRAM
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
     </motion.div>
   );
 }

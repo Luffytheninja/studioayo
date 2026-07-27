@@ -155,21 +155,17 @@ export default function ContactPage() {
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-light text-[#F4F1EA]/70">
                   <div>
-                    <span className="block font-mono text-[10px] uppercase tracking-wider text-[#FF4D4D] mb-1">Studio</span>
                     <span className="text-white font-medium">Studio AYO</span>
                   </div>
                   <div>
-                    <span className="block font-mono text-[10px] uppercase tracking-wider text-[#FF4D4D] mb-1">Email</span>
                     <a href={`mailto:${STUDIO_INFO.email}`} className="text-white hover:text-[#FF4D4D] transition-colors underline underline-offset-4">
                       {STUDIO_INFO.email}
                     </a>
                   </div>
                   <div>
-                    <span className="block font-mono text-[10px] uppercase tracking-wider text-[#FF4D4D] mb-1">Phone</span>
                     <span className="text-white">{STUDIO_INFO.phone}</span>
                   </div>
                   <div>
-                    <span className="block font-mono text-[10px] uppercase tracking-wider text-[#FF4D4D] mb-1">Location</span>
                     <span className="text-white">{STUDIO_INFO.location}</span>
                   </div>
                 </div>
@@ -186,7 +182,7 @@ export default function ContactPage() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="border-t border-[#F4F1EA]/15 pt-8"
             >
-              <span className="block font-mono text-[10px] uppercase tracking-wider text-[#FF4D4D] mb-4">FAQ / Keep it short.</span>
+              <div className="mb-4 text-sm font-mono uppercase tracking-wider text-[#F4F1EA]/60">FAQ</div>
               <div className="divide-y divide-[#F4F1EA]/5">
                 {CONTACT_FAQS.map((faq, idx) => (
                   <FAQItem key={idx} question={faq.question} answer={faq.answer} />

@@ -21,7 +21,7 @@ function TeamCard({ member }: { member: typeof TEAM[0] }) {
       </div>
       <div className="border-t border-[#1C120C] py-5 px-4 text-center">
         <h3 className="text-xl font-normal text-[#1C120C] mb-1">{member.name}</h3>
-        <p className="text-sm font-normal text-[#FF4D4D] tracking-wide">{member.role}</p>
+        <p className="text-sm font-normal text-[#1C120C]/70 tracking-wide">{member.role}</p>
       </div>
     </div>
   );
@@ -154,7 +154,7 @@ export default function AboutPage() {
                   
                   {member.skills && member.skills.length > 0 && (
                     <div className="pt-6 border-t border-[#1C120C]/15">
-                      <h4 className="text-xs font-mono uppercase tracking-widest text-[#FF4D4D] mb-3">
+                      <h4 className="text-xs font-mono uppercase tracking-widest text-[#1C120C]/60 mb-3">
                         Expertise
                       </h4>
                       <div className="flex flex-wrap gap-2">

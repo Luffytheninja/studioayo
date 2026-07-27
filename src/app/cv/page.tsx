@@ -23,9 +23,6 @@ export default function CVPage() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-[#F4F1EA]/15 mb-16 gap-6">
           <div>
-            <span className="text-xs font-mono uppercase tracking-widest text-[#FF4D4D] block mb-2">
-              Studio Curriculum Vitae
-            </span>
             <h1 className="text-5xl sm:text-7xl font-normal tracking-tight">
               Studio Ayo — C.V
             </h1>
@@ -80,7 +77,7 @@ export default function CVPage() {
               <div key={member.id} className="py-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                   <h3 className="text-2xl font-normal">{member.name}</h3>
-                  <p className="text-sm text-[#FF4D4D] font-light">{member.role}</p>
+                  <p className="text-sm text-[#F4F1EA]/70 font-light">{member.role}</p>
                 </div>
                 <div className="text-sm text-[#F4F1EA]/70 max-w-md font-light">
                   {member.bio}

@@ -88,9 +88,6 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
                 : 'bg-[#0D0D0F] border-[#F4F1EA]/10 text-[#F4F1EA]'
             }`}
           >
-            <span className="block font-mono text-[10px] uppercase tracking-widest text-[#FF4D4D] mb-4">
-              Project Specification
-            </span>
             <h2 className="text-2xl font-normal mb-6 tracking-tight">Project Details</h2>
             
             <div className={`border-t border-b divide-y text-sm font-light py-2 ${
@@ -135,10 +132,6 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
 
         {/* Media Block: Prioritize media in original format */}
         <section className="mb-24 space-y-16">
-          <span className="block font-mono text-xs uppercase tracking-widest text-[#FF4D4D] border-b border-white/10 pb-4">
-            Case Media Showcase
-          </span>
-
           {/* 1. Core looping video (widescreen player) */}
           {hasVideo && (
             <motion.div
@@ -169,7 +162,6 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
             /* Mobile app screenshots grid: original portrait aspect ratios */
             <div>
               <div className="text-center mb-10">
-                <span className="inline-block font-mono text-xs uppercase tracking-widest text-[#FF4D4D] mb-2">Layout Grid</span>
                 <h3 className="text-xl font-normal">App Interface Flow</h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
@@ -249,9 +241,6 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
           <section className={`py-12 border-t mb-24 max-w-5xl mx-auto ${
             isLightPage ? 'border-[#1C120C]/15' : 'border-white/15'
           }`}>
-            <span className="block font-mono text-xs uppercase tracking-widest text-[#FF4D4D] mb-8">
-              Color Palette Spec
-            </span>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 items-center justify-center">
               {project.colorPalette.map((color, idx) => (
                 <div key={idx} className="flex flex-col items-center gap-3">
@@ -276,9 +265,6 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
           <section className={`py-16 border-t max-w-4xl mx-auto text-center ${
             isLightPage ? 'border-[#1C120C]/15' : 'border-white/15'
           }`}>
-            <span className="inline-block font-mono text-xs uppercase tracking-widest text-[#FF4D4D] mb-8">
-              retrospective
-            </span>
             <blockquote className="text-2xl sm:text-3xl font-light leading-relaxed italic mb-8">
               &quot;{project.review.quote}&quot;
             </blockquote>

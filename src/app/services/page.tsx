@@ -147,7 +147,6 @@ export default function ServicesPage() {
         <section className="py-16 border-t border-[#F4F1EA]/15 mb-28">
           <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 mb-12">
             <div>
-              <span className="block font-mono text-xs uppercase tracking-widest text-[#FF4D4D] mb-3">Workflow</span>
               <h2 className="text-4xl sm:text-5xl font-normal tracking-tight">Our Process</h2>
             </div>
             <p className="max-w-md text-base sm:text-lg text-[#F4F1EA]/60 font-light">
@@ -204,9 +203,6 @@ export default function ServicesPage() {
                   {/* Best For labels/badges */}
                   {cat.bestForItems && (
                     <div className="mb-8">
-                      <span className="block text-xs font-mono uppercase tracking-widest text-[#FF4D4D] mb-3">
-                        {cat.bestForLabel || 'Ideal For'}
-                      </span>
                       <div className="flex flex-wrap gap-2 max-w-md">
                         {cat.bestForItems.map((item) => (
                           <span
@@ -314,9 +310,6 @@ export default function ServicesPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
                         <div className="flex items-center justify-between w-full">
                           <div>
-                            <span className="block font-mono text-[9px] uppercase tracking-widest text-[#FF4D4D] mb-1">
-                              Signature Project
-                            </span>
                             <span className="text-sm font-medium text-white group-hover:underline decoration-[#FF4D4D] underline-offset-4">
                               View Case Study: {STUDIO_INFO.trustedClients.find(c => c.toLowerCase().includes(cat.signatureProject || '')) || 'Ountodun Concept Store'}
                             </span>
@@ -347,7 +340,6 @@ export default function ServicesPage() {
         {/* FAQ Section */}
         <section className="max-w-4xl mx-auto mb-32">
           <div className="text-center mb-16">
-            <span className="inline-block font-mono text-xs uppercase tracking-widest text-[#FF4D4D] mb-3">FAQ</span>
             <h2 className="text-4xl sm:text-5xl font-normal tracking-tight">Frequently Asked Questions</h2>
           </div>
           
