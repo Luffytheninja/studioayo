@@ -359,15 +359,15 @@ export default function HeroOverlay() {
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 border-t border-[#F4F1EA]/10 pt-8 text-xs font-mono text-[#F4F1EA]/50 tracking-wider">
                   <div className="flex flex-col gap-1">
                     <span className="text-[10px] text-[#F4F1EA]/30 uppercase tracking-widest">Get in touch</span>
-                    <a href="mailto:sayhello@studioayo.com" className="text-[#F4F1EA] hover:text-[#FF4D4D] transition-colors text-sm">
-                      sayhello@studioayo.com
+                    <a href="mailto:contactstudioayo@gmail.com" className="text-[#F4F1EA] hover:text-[#FF4D4D] transition-colors text-sm">
+                      contactstudioayo@gmail.com
                     </a>
                   </div>
                   <div className="flex gap-4">
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#F4F1EA] transition-colors">
-                      TWITTER
+                    <a href="https://x.com/studioayodesign" target="_blank" rel="noopener noreferrer" className="hover:text-[#F4F1EA] transition-colors">
+                      TWITTER / X
                     </a>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#F4F1EA] transition-colors">
+                    <a href="https://www.instagram.com/contactstudioayo/" target="_blank" rel="noopener noreferrer" className="hover:text-[#F4F1EA] transition-colors">
                       INSTAGRAM
                     </a>
                   </div>
