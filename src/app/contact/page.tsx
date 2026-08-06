@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useForm } from 'react-hook-form';
+import { useSearchParams } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -74,8 +75,12 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   );
 }
 
-export default function ContactPage() {
+function ContactFormContent() {
+  const searchParams = useSearchParams();
+  const artwork = searchParams.get('artwork');
+
   const [submitted, setSubmitted] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const {
     register,
@@ -89,21 +94,35 @@ export default function ContactPage() {
       company: '',
       email: '',
       phone: '',
-      service: 'Website',
+      service: artwork ? 'Illustration' : 'Website',
       budget: 'Under $1,000 / ₦1,000,000',
-      message: '',
+      message: artwork 
+        ? `Hello! I am interested in purchasing the original artwork "${artwork}" by Alex. Please let me know its availability and shipping details.` 
+        : '',
     },
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    // Simulate server submission delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log('Contact form submitted:', data);
-    setSubmitted(true);
+    setServerError(null);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const json = await res.json().catch(() => ({}));
+        throw new Error(json.error || 'Something went wrong. Please try again.');
+      }
+      setSubmitted(true);
+    } catch (err: unknown) {
+      setServerError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    }
   };
 
   const handleReset = () => {
     setSubmitted(false);
+    setServerError(null);
     reset();
   };
 
@@ -371,6 +390,13 @@ export default function ContactPage() {
                         )}
                       </div>
 
+                      {/* Server Error */}
+                      {serverError && (
+                        <p className="text-xs text-[#FF4D4D] font-mono bg-[#FF4D4D]/10 border border-[#FF4D4D]/30 px-4 py-3 leading-relaxed">
+                          {serverError}
+                        </p>
+                      )}
+
                       {/* Submit Button */}
                       <button
                         type="submit"
@@ -397,5 +423,17 @@ export default function ContactPage() {
       </div>
       <Footer />
     </div>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={
+      <div className="pt-32 pb-16 px-6 md:px-12 bg-[#070708] min-h-screen text-[#F4F1EA] flex items-center justify-center">
+        <div className="text-lg opacity-70">Loading Form...</div>
+      </div>
+    }>
+      <ContactFormContent />
+    </Suspense>
   );
 }

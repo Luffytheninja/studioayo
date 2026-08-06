@@ -80,3 +80,14 @@ export interface StudioInfo {
   }[];
   trustedClients: string[];
 }
+
+export interface Artwork {
+  id: string;
+  title: string;
+  medium: string;
+  year: string;
+  priceUSD: number;
+  priceNGN: number;
+  image: string;
+  description: string;
+}

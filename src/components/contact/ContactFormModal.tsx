@@ -27,6 +27,7 @@ interface ContactFormModalProps {
 
 export default function ContactFormModal({ isOpen, onClose, defaultService = 'Website' }: ContactFormModalProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
 
   // Map incoming service title to dropdown value if needed
   const normalizedService = (() => {
@@ -60,14 +61,26 @@ export default function ContactFormModal({ isOpen, onClose, defaultService = 'We
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    // Simulate server submission delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log('Form submitted:', data);
-    setSubmitted(true);
+    setServerError(null);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const json = await res.json().catch(() => ({}));
+        throw new Error(json.error || 'Something went wrong. Please try again.');
+      }
+      setSubmitted(true);
+    } catch (err: unknown) {
+      setServerError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    }
   };
 
   const handleReset = () => {
     setSubmitted(false);
+    setServerError(null);
     reset();
     onClose();
   };
@@ -247,6 +260,13 @@ export default function ContactFormModal({ isOpen, onClose, defaultService = 'We
                       <p className="text-xs text-[#FF4D4D] mt-1 font-mono">{errors.message.message}</p>
                     )}
                   </div>
+
+                  {/* Server Error */}
+                  {serverError && (
+                    <p className="text-xs text-[#FF4D4D] font-mono bg-[#FF4D4D]/10 border border-[#FF4D4D]/30 px-4 py-3 leading-relaxed">
+                      {serverError}
+                    </p>
+                  )}
 
                   {/* Submit Button */}
                   <button

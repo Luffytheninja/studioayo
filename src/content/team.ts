@@ -62,16 +62,17 @@ export const TEAM: TeamMember[] = [
   {
     id: 'abe',
     name: 'Abe',
-    role: 'Full-Stack Developer',
+    role: 'AI/ML & Backend Engineer',
     image: '/media/images/abe.png',
-    bio: 'Abe transforms concepts into fast, scalable digital products using modern web technologies. He focuses on performance, accessibility, maintainability, and polished user experiences.',
+    bio: 'Abe builds intelligent, production-grade systems from multi-agent pipelines to scalable backend infrastructure. He focuses on reliability, performance, and turning complex models into real products.',
     skills: [
-      'Full-Stack Development',
-      'React & Next.js',
-      'Backend Systems',
+      'AI/ML Engineering',
+      'Backend Systems (FastAPI)',
+      'LLM & Agent Pipelines',
+      'Computer Vision',
       'API Integration',
-      'CMS Development',
-      'Performance Optimization'
+      'Cloud & DevOps'
     ],
   },
+
 ];
