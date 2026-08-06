@@ -1,13 +1,23 @@
 'use client';
 
 import { use } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { motion } from 'framer-motion';
 import Footer from '@/components/ui/Footer';
 import { PROJECTS } from '@/content/projects';
-import { ArrowLeft, Play, Film } from 'lucide-react';
+import { ArrowLeft, Film, Box } from 'lucide-react';
+
+const ModelViewer3D = dynamic(() => import('@/components/works/ModelViewer3D'), {
+  ssr: false,
+  loading: () => (
+    <div className="relative w-full aspect-[4/3] bg-[#0A0A0C] border border-white/10 flex items-center justify-center">
+      <div className="w-10 h-10 rounded-full border-2 border-white/10 border-t-[#FF4D4D] animate-spin" />
+    </div>
+  ),
+});
 
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>;
@@ -24,6 +34,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
   const isLightPage = project.slug === 'ountodun';
   const isMobileApp = project.slug === 'hachi';
   const hasVideo = !!project.videoUrl;
+  const hasModel = !!project.modelUrl;
 
   return (
     <div
@@ -154,6 +165,22 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
                 <Film className="w-3 h-3 text-[#FF4D4D]" />
                 <span>Original Video Render</span>
               </div>
+            </motion.div>
+          )}
+
+          {/* 1b. Interactive 3D Model Viewer */}
+          {hasModel && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="flex items-center gap-3 mb-4 opacity-60">
+                <Box className="w-4 h-4" />
+                <span className="text-xs font-mono uppercase tracking-widest">Interactive 3D Model</span>
+              </div>
+              <ModelViewer3D modelUrl={project.modelUrl!} />
             </motion.div>
           )}
 

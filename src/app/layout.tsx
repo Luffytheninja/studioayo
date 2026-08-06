@@ -5,6 +5,7 @@ import SmoothScroll from '@/components/ui/SmoothScroll';
 import CustomCursor from '@/components/ui/CustomCursor';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://studioayo.com'),
   title: 'Studio Ayo — Multidisciplinary Digital Design Studio',
   description:
     'Designing products, brands & digital experiences that people remember. Boutique multidisciplinary digital design studio based in Lagos.',

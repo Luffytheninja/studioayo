@@ -10,6 +10,7 @@ export interface Project {
   thumbnail: string;
   bannerImage?: string;
   videoUrl?: string;
+  modelUrl?: string;
   description: string;
   overview?: string;
   client?: string;
