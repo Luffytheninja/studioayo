@@ -186,49 +186,47 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
               </div>
             </div>
           ) : (
-            /* Stacked visual feed: each image in its true aspect ratio */
+            /* Stacked visual feed: each image at its own natural aspect ratio */
             <div className="space-y-12 sm:space-y-20 max-w-5xl mx-auto">
               {project.galleryImages && project.galleryImages.length > 0 ? (
-                project.galleryImages.map((img, idx) => {
-                  // Determine layout classes based on index to create interest
-                  const isWide = img.includes('banner') || idx === 0;
-                  return (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 40 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8 }}
-                      className={`relative w-full border overflow-hidden bg-neutral-900/40 ${
-                        isWide ? 'aspect-[16/9]' : 'aspect-square md:aspect-[4/3] max-w-3xl mx-auto'
-                      } ${isLightPage ? 'border-[#1C120C]' : 'border-white/10 shadow-2xl'}`}
-                    >
-                      <Image
-                        src={img}
-                        alt={`Gallery Asset ${idx + 1}`}
-                        fill
-                        className="object-cover hover:scale-[1.02] transition-transform duration-1000"
-                        sizes="100vw"
-                      />
-                    </motion.div>
-                  );
-                })
+                project.galleryImages.map((img, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className={`w-full border overflow-hidden bg-neutral-900/40 ${
+                      isLightPage ? 'border-[#1C120C]' : 'border-white/10 shadow-2xl'
+                    }`}
+                  >
+                    <Image
+                      src={img}
+                      alt={`Gallery Asset ${idx + 1}`}
+                      width={0}
+                      height={0}
+                      sizes="(max-width: 768px) 100vw, 80vw"
+                      className="w-full h-auto block hover:scale-[1.02] transition-transform duration-1000 origin-center"
+                    />
+                  </motion.div>
+                ))
               ) : (
                 /* Fallback if no gallery images listed */
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className={`relative w-full aspect-[16/9] border overflow-hidden ${
+                  className={`w-full border overflow-hidden ${
                     isLightPage ? 'border-[#1C120C]' : 'border-white/10 shadow-2xl'
                   }`}
                 >
                   <Image
                     src={project.thumbnail}
                     alt={project.title}
-                    fill
-                    className="object-cover"
+                    width={0}
+                    height={0}
                     sizes="100vw"
+                    className="w-full h-auto block"
                   />
                 </motion.div>
               )}

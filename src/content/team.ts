@@ -63,7 +63,7 @@ export const TEAM: TeamMember[] = [
     id: 'abe',
     name: 'Abe',
     role: 'AI/ML & Backend Engineer',
-    image: '/media/images/abe.png',
+    image: '/media/images/abe.jpeg',
     bio: 'Abe builds intelligent, production-grade systems from multi-agent pipelines to scalable backend infrastructure. He focuses on reliability, performance, and turning complex models into real products.',
     skills: [
       'AI/ML Engineering',
@@ -74,5 +74,19 @@ export const TEAM: TeamMember[] = [
       'Cloud & DevOps'
     ],
   },
-
+  {
+    id: 'wasola',
+    name: 'Wasola',
+    role: 'HR Manager · Social Media Manager',
+    image: '/media/images/wasola.jpeg',
+    bio: 'Wasola is the heartbeat of Studio Ayo\'s culture and online presence. She manages talent operations, team wellbeing, and the studio\'s social media voice — ensuring the brand stays connected, consistent, and authentically human across every platform.',
+    skills: [
+      'HR & Talent Management',
+      'Social Media Strategy',
+      'Community Building',
+      'Content Planning',
+      'Brand Voice',
+      'Team Culture'
+    ],
+  },
 ];
