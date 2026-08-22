@@ -368,7 +368,7 @@ export default function HeroOverlay() {
                     <a href="https://x.com/studioayodesign" target="_blank" rel="noopener noreferrer" className="hover:text-[#F4F1EA] transition-colors">
                       TWITTER / X
                     </a>
-                    <a href="https://www.instagram.com/contactstudioayo/" target="_blank" rel="noopener noreferrer" className="hover:text-[#F4F1EA] transition-colors">
+                    <a href="https://www.instagram.com/studi.oayo" target="_blank" rel="noopener noreferrer" className="hover:text-[#F4F1EA] transition-colors">
                       INSTAGRAM
                     </a>
                   </div>

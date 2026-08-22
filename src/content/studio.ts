@@ -17,7 +17,7 @@ export const STUDIO_INFO: StudioInfo = {
   clientsLocations: 'Working with clients across Lagos • Abuja • Port Harcourt • Worldwide',
   socials: [
     { name: 'Say Hi,', url: 'mailto:contactstudioayo@gmail.com', colorHex: '#FF4D4D' },
-    { name: 'Instagram', url: 'https://www.instagram.com/contactstudioayo/', colorHex: '#E1306C' },
+    { name: 'Instagram', url: 'https://www.instagram.com/studi.oayo', colorHex: '#E1306C' },
     { name: 'X / Twitter', url: 'https://x.com/studioayodesign', colorHex: '#FFFFFF' },
   ],
   trustedClients: [
