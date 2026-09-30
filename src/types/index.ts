@@ -1,7 +1,44 @@
+export interface CaseStudySection {
+  title: string;
+  subtitle?: string;
+  content: string | string[];
+  items?: string[];
+  callout?: string;
+  quote?: string;
+  subsections?: {
+    title: string;
+    content: string | string[];
+  }[];
+}
+
+export interface KeyTakeaway {
+  number?: string;
+  title: string;
+  description: string;
+}
+
+export interface RoleBreakdown {
+  category: string;
+  tasks: string[];
+}
+
 export interface Project {
   slug: string;
   title: string;
+  subtitle?: string;
+  tagline?: string;
   year: string;
+  status?: string;
+  liveUrl?: string;
+  platform?: string;
+  client?: string;
+  role?: string;
+  collaborators?: string;
+  scope?: string[];
+  tools?: string[];
+  deliverables?: string[];
+  disciplines?: string[];
+  oneLiner?: string;
   categories: string[];
   credits: {
     role: string;
@@ -13,7 +50,9 @@ export interface Project {
   modelUrl?: string;
   description: string;
   overview?: string;
-  client?: string;
+  sections?: CaseStudySection[];
+  keyTakeaways?: KeyTakeaway[];
+  roleBreakdown?: RoleBreakdown[];
   typography?: {
     logoFontName?: string;
     secondaryFontName?: string;
@@ -32,6 +71,7 @@ export interface Project {
   };
   galleryImages?: string[];
 }
+
 
 export interface ServicePricing {
   label: string;

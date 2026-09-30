@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { createPortal } from 'react-dom';
-import { X } from 'lucide-react';
+import { X, ArrowDown } from 'lucide-react';
 import {
   PEEP_ITEMS,
   PeepItem,
@@ -14,10 +14,6 @@ import {
 } from './PeepPreview';
 
 /* ─── Logo font-cycling stages ──────────────────────────────────────────── */
-// Danfo = display serif (regular)
-// Instrument Serif italic = claw-like expressive
-// Hanken Grotesk 900 = comb-like bold condensed
-// Final = actual PNG logo
 const LOGO_STAGES = [
   {
     id: 'danfo',
@@ -62,7 +58,6 @@ function LogoCycler() {
 
   useEffect(() => {
     if (stageIndex >= LOGO_STAGES.length - 1) return;
-    // Each stage holds for ~380ms before flipping
     const t = setTimeout(() => setStageIndex((i) => i + 1), 380);
     return () => clearTimeout(t);
   }, [stageIndex]);
@@ -138,13 +133,12 @@ function useSmoothCursor() {
   return pos;
 }
 
-/* ─── Nav items ─────────────────────────────────────────────────────────── */
+/* ─── Nav items (CV removed, clean 5-pillar studio structure) ────────── */
 const NAV_ITEMS = [
-  { label: 'C.V', href: '/cv' },
   { label: 'Works', href: '/works' },
   { label: 'Services', href: '/services' },
-  { label: 'Shop', href: '/shop' },
   { label: 'About', href: '/about' },
+  { label: 'Shop', href: '/shop' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -205,8 +199,6 @@ export default function HeroOverlay() {
   const handleEnter = useCallback((item: PeepItem) => setActiveItem(item), []);
   const handleLeave = useCallback(() => setActiveItem(null), []);
 
-  /* Portal: render the floating card at document.body level so it always
-     stays above every z-index layer without fighting stacking contexts. */
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -217,14 +209,14 @@ export default function HeroOverlay() {
       initial="hidden"
       animate="show"
     >
-      {/* ── Floating cursor card — portal mounted once document is ready ── */}
+      {/* ── Floating cursor card ── */}
       {mounted &&
         createPortal(
           <FloatingPeepCard item={activeItem} cursorPos={cursorPos} />,
           document.body,
         )}
 
-      {/* ── Studio Ayo Logo — font-cycling reveal ── */}
+      {/* ── Studio Ayo Logo ── */}
       <motion.div
         variants={itemVariants}
         className="flex justify-center pt-8 md:pt-10"
@@ -235,20 +227,20 @@ export default function HeroOverlay() {
       {/* ── Spacer pushes headline block toward the bottom ── */}
       <div className="flex-1" />
 
-      {/* ── Headline + Pill Nav — bottom, centered ── */}
+      {/* ── Headline + Nav CTAs ── */}
       <div className="flex flex-col items-center gap-5 md:gap-6 px-6 sm:px-10 md:px-16 lg:px-24 text-center">
         <motion.h1
           variants={itemVariants}
-          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal tracking-tight leading-[1.05] text-[#F4F1EA] drop-shadow-[0_6px_18px_rgba(0,0,0,0.7)] max-w-xl md:max-w-2xl text-center font-brand pointer-events-auto"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal tracking-tight leading-[1.08] text-[#F4F1EA] drop-shadow-[0_6px_18px_rgba(0,0,0,0.7)] max-w-xl md:max-w-2xl text-center font-brand pointer-events-auto"
           style={{ fontFamily: "'Hanken Grotesk', system-ui, sans-serif" }}
         >
           <InteractiveHeadline onEnter={handleEnter} onLeave={handleLeave} />
         </motion.h1>
 
         {/* ── Pill Nav (Desktop) ── */}
-        <motion.div variants={itemVariants} className="hidden md:block">
+        <motion.div variants={itemVariants} className="hidden md:flex items-center gap-3">
           <nav
-            className="pointer-events-auto flex items-center gap-1 px-5 py-3 rounded-full glass-nav border border-[#F4F1EA]/20 shadow-[0_10px_40px_rgba(0,0,0,0.6)]"
+            className="pointer-events-auto flex items-center gap-1 px-5 py-2.5 rounded-full glass-nav border border-[#F4F1EA]/20 shadow-[0_10px_40px_rgba(0,0,0,0.6)]"
             aria-label="Hero Navigation"
           >
             {NAV_ITEMS.map((item) => (
@@ -264,41 +256,80 @@ export default function HeroOverlay() {
           </nav>
         </motion.div>
 
-        {/* ── View More Button (Mobile Only) ── */}
-        <motion.div variants={itemVariants} className="md:hidden">
+        {/* ── Mobile Action Buttons (Mobile First Quick View) ── */}
+        <motion.div variants={itemVariants} className="md:hidden flex items-center gap-2.5">
+          <a
+            href="#featured-works"
+            className="pointer-events-auto px-5 py-2.5 text-xs font-mono uppercase tracking-wider text-[#070708] bg-[#F4F1EA] hover:bg-white transition-all duration-200 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.6)] font-semibold active:scale-95 flex items-center gap-1.5"
+            data-cursor-text="Explore"
+          >
+            <span>Explore Works</span>
+            <ArrowDown className="w-3.5 h-3.5" />
+          </a>
           <button
             onClick={() => setMenuOpen(true)}
-            className="pointer-events-auto px-6 py-2.5 text-sm font-medium tracking-wide text-[#F4F1EA]/90 hover:text-[#F4F1EA] transition-all duration-200 rounded-full glass-nav border border-[#F4F1EA]/20 shadow-[0_10px_40px_rgba(0,0,0,0.6)] hover:bg-white/10 active:scale-95"
-            data-cursor-text="View Menu"
+            className="pointer-events-auto px-5 py-2.5 text-xs font-mono uppercase tracking-wider text-[#F4F1EA]/90 hover:text-[#F4F1EA] transition-all duration-200 rounded-full glass-nav border border-[#F4F1EA]/20 shadow-[0_10px_40px_rgba(0,0,0,0.6)] hover:bg-white/10 active:scale-95"
+            data-cursor-text="Menu"
           >
-            View More
+            Menu
           </button>
         </motion.div>
       </div>
 
-      {/* ── Footer Bar — full width, sits at the very bottom ── */}
+      {/* ── Footer Bar — Center Aligned on Mobile, 3-Column on Desktop ── */}
       <motion.div
         variants={itemVariants}
-        className="w-full flex items-center justify-between text-[11px] md:text-xs text-[#F4F1EA]/50 font-mono pointer-events-auto tracking-wider px-6 sm:px-10 md:px-16 pt-8 md:pt-10 pb-6 md:pb-8"
+        className="w-full text-[11px] md:text-xs text-[#F4F1EA]/50 font-mono pointer-events-auto tracking-wider px-6 sm:px-10 md:px-16 pt-6 sm:pt-8 md:pt-10 pb-6 md:pb-8"
       >
-        <Link
-          href="/terms"
-          className="hover:text-[#F4F1EA] transition-colors"
-          data-cursor-text="Terms"
-        >
-          Terms of Services
-        </Link>
-        <span>© 2026 Studio Ayo</span>
-        <Link
-          href="/privacy"
-          className="hover:text-[#F4F1EA] transition-colors"
-          data-cursor-text="Privacy"
-        >
-          Privacy Policy
-        </Link>
+        {/* Mobile Layout: perfectly balanced and center-aligned */}
+        <div className="sm:hidden flex flex-col items-center justify-center gap-2 text-center">
+          <span className="text-[#F4F1EA]/70">© 2026 Studio Ayo</span>
+          <div className="flex items-center justify-center gap-3">
+            <Link
+              href="/terms"
+              className="hover:text-[#F4F1EA] transition-colors"
+              data-cursor-text="Terms"
+            >
+              Terms of Services
+            </Link>
+            <span className="opacity-30">·</span>
+            <Link
+              href="/privacy"
+              className="hover:text-[#F4F1EA] transition-colors"
+              data-cursor-text="Privacy"
+            >
+              Privacy Policy
+            </Link>
+          </div>
+        </div>
+
+        {/* Desktop Layout: 3-column grid with exact middle alignment */}
+        <div className="hidden sm:grid sm:grid-cols-3 items-center">
+          <div className="flex items-center justify-start">
+            <Link
+              href="/terms"
+              className="hover:text-[#F4F1EA] transition-colors"
+              data-cursor-text="Terms"
+            >
+              Terms of Services
+            </Link>
+          </div>
+          <div className="text-center text-[#F4F1EA]/70">
+            <span>© 2026 Studio Ayo</span>
+          </div>
+          <div className="flex items-center justify-end">
+            <Link
+              href="/privacy"
+              className="hover:text-[#F4F1EA] transition-colors"
+              data-cursor-text="Privacy"
+            >
+              Privacy Policy
+            </Link>
+          </div>
+        </div>
       </motion.div>
 
-      {/* ── Fullscreen Mobile Menu Overlay ── */}
+      {/* ── Glassmorphism Mobile Menu Overlay ── */}
       {mounted &&
         createPortal(
           <AnimatePresence>
@@ -307,8 +338,12 @@ export default function HeroOverlay() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.35, ease: 'easeInOut' }}
-                className="fixed inset-0 z-50 flex flex-col justify-between p-8 pointer-events-auto select-none bg-[#070708]/98 backdrop-blur-2xl"
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className="fixed inset-0 z-50 flex flex-col justify-between p-7 sm:p-10 pointer-events-auto select-none bg-[#070708]/85 backdrop-blur-2xl border border-[#F4F1EA]/10 shadow-[0_30px_100px_rgba(0,0,0,0.8)]"
+                style={{
+                  backdropFilter: 'blur(28px)',
+                  WebkitBackdropFilter: 'blur(28px)',
+                }}
               >
                 {/* Header: Logo & Close Button */}
                 <div className="flex items-center justify-between">
@@ -323,7 +358,7 @@ export default function HeroOverlay() {
                   </div>
                   <button
                     onClick={() => setMenuOpen(false)}
-                    className="w-10 h-10 rounded-full flex items-center justify-center border border-[#F4F1EA]/10 hover:border-[#F4F1EA]/30 bg-[#F4F1EA]/5 hover:bg-[#F4F1EA]/10 transition-all duration-200 cursor-pointer active:scale-90"
+                    className="w-10 h-10 rounded-full flex items-center justify-center border border-[#F4F1EA]/15 hover:border-[#F4F1EA]/35 bg-[#F4F1EA]/5 hover:bg-[#F4F1EA]/15 transition-all duration-200 cursor-pointer active:scale-90"
                     aria-label="Close menu"
                   >
                     <X className="w-5 h-5 text-[#F4F1EA]" />
@@ -331,16 +366,16 @@ export default function HeroOverlay() {
                 </div>
 
                 {/* Menu Links */}
-                <div className="flex flex-col gap-6 my-auto pl-4">
+                <div className="flex flex-col gap-6 my-auto pl-2">
                   {NAV_ITEMS.map((item, index) => (
                     <motion.div
                       key={item.href}
-                      initial={{ opacity: 0, y: 30 }}
+                      initial={{ opacity: 0, y: 25 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 30 }}
+                      exit={{ opacity: 0, y: 25 }}
                       transition={{
-                        duration: 0.45,
-                        delay: index * 0.08,
+                        duration: 0.4,
+                        delay: index * 0.07,
                         ease: [0.16, 1, 0.3, 1],
                       }}
                     >
@@ -357,10 +392,10 @@ export default function HeroOverlay() {
                 </div>
 
                 {/* Footer / Socials */}
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 border-t border-[#F4F1EA]/10 pt-8 text-xs font-mono text-[#F4F1EA]/50 tracking-wider">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 border-t border-[#F4F1EA]/15 pt-6 text-xs font-mono text-[#F4F1EA]/50 tracking-wider">
                   <div className="flex flex-col gap-1">
-                    <span className="text-[10px] text-[#F4F1EA]/30 uppercase tracking-widest">Get in touch</span>
-                    <a href="mailto:contactstudioayo@gmail.com" className="text-[#F4F1EA] hover:text-[#FF4D4D] transition-colors text-sm">
+                    <span className="text-[10px] text-[#F4F1EA]/40 uppercase tracking-widest">Inquiries & Partnerships</span>
+                    <a href="mailto:contactstudioayo@gmail.com" className="text-[#F4F1EA] hover:text-[#FF4D4D] transition-colors text-sm font-sans">
                       contactstudioayo@gmail.com
                     </a>
                   </div>

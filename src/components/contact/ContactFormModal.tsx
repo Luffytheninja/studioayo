@@ -31,15 +31,14 @@ export default function ContactFormModal({ isOpen, onClose, defaultService = 'We
 
   // Map incoming service title to dropdown value if needed
   const normalizedService = (() => {
-    if (!defaultService) return 'Website';
-    if (defaultService.includes('Brand')) return 'Brand Identity';
-    if (defaultService.includes('Web')) return 'Website';
-    if (defaultService.includes('Product') || defaultService.includes('UI')) return 'UI/UX';
-    if (defaultService.includes('3D') || defaultService.includes('Motion')) return '3D';
-    if (defaultService.includes('Photo') || defaultService.includes('Film')) return 'Photography & Film';
-    if (defaultService.includes('Illustration')) return 'Illustration';
-    if (defaultService.includes('Development')) return 'Development';
-    return defaultService;
+    if (!defaultService) return 'Web Design & Engineering';
+    if (defaultService.includes('Dev') || defaultService.includes('Code')) return 'Web Development';
+    if (defaultService.includes('Design') && !defaultService.includes('3D')) return 'Web Design';
+    if (defaultService.includes('Product') || defaultService.includes('Hachi')) return 'Digital Products (Hachi / Venture)';
+    if (defaultService.includes('3D') || defaultService.includes('Motion')) return '3D Design & Motion';
+    if (defaultService.includes('Illustration')) return 'Bespoke Illustration';
+    if (defaultService.includes('Retainer')) return 'Dedicated Studio Retainer';
+    return 'Web Design & Engineering';
   })();
 
   const {
@@ -55,7 +54,7 @@ export default function ContactFormModal({ isOpen, onClose, defaultService = 'We
       email: '',
       phone: '',
       service: normalizedService,
-      budget: 'Under $1,000 / ₦1,000,000',
+      budget: '$5,000 – $10,000 / ₦5,000,000 – ₦10,000,000',
       message: '',
     },
   });
@@ -216,14 +215,14 @@ export default function ContactFormModal({ isOpen, onClose, defaultService = 'We
                         {...register('service')}
                         className="w-full bg-[#F9F9FB] border border-[#1C120C]/30 rounded-none px-4 py-3 text-sm text-[#1C120C] focus:outline-none focus:border-[#1C120C] transition-colors"
                       >
-                        <option value="Brand Identity">Brand Identity</option>
-                        <option value="Website">Website</option>
-                        <option value="UI/UX">UI/UX</option>
-                        <option value="3D">3D</option>
-                        <option value="Photography & Film">Photography & Film</option>
-                        <option value="Illustration">Illustration</option>
-                        <option value="Development">Development</option>
-                        <option value="Not sure yet">Not sure yet</option>
+                        <option value="Web Design & Engineering">Web Design & Engineering (Full Flagship)</option>
+                        <option value="Web Design">Web Design & Art Direction (UI/UX)</option>
+                        <option value="Web Development">Web Development (Next.js / Frontend)</option>
+                        <option value="Bespoke Illustration">Bespoke Illustration & Brand Art</option>
+                        <option value="3D Design & Motion">3D Design & Tactile Motion</option>
+                        <option value="Digital Products (Hachi / Venture)">Digital Products (Hachi / Incubator)</option>
+                        <option value="Dedicated Studio Retainer">Dedicated Studio Retainer (Monthly)</option>
+                        <option value="Custom Scope / Other">Custom Scope / Inquire</option>
                       </select>
                     </div>
 
@@ -236,11 +235,11 @@ export default function ContactFormModal({ isOpen, onClose, defaultService = 'We
                         {...register('budget')}
                         className="w-full bg-[#F9F9FB] border border-[#1C120C]/30 rounded-none px-4 py-3 text-sm text-[#1C120C] focus:outline-none focus:border-[#1C120C] transition-colors"
                       >
-                        <option value="Under $1,000 / ₦1,000,000">Under $1,000 / ₦1,000,000</option>
-                        <option value="$1,000 - $3,000 / ₦1,000,000 - ₦3,000,000">$1,000 - $3,000 / ₦1,000,000 - ₦3,000,000</option>
-                        <option value="$3,000 - $6,000 / ₦3,000,000 - ₦6,000,000">$3,000 - $6,000 / ₦3,000,000 - ₦6,000,000</option>
-                        <option value="$6,000 - $10,000 / ₦6,000,000 - ₦10,000,000">$6,000 - $10,000 / ₦6,000,000 - ₦10,000,000</option>
-                        <option value="$10,000+ / ₦10,000,000+">$10,000+ / ₦10,000,000+</option>
+                        <option value="$2,500 – $5,000 / ₦2,500,000 – ₦5,000,000">$2,500 – $5,000 / ₦2,500,000 – ₦5,000,000</option>
+                        <option value="$5,000 – $10,000 / ₦5,000,000 – ₦10,000,000">$5,000 – $10,000 / ₦5,000,000 – ₦10,000,000</option>
+                        <option value="$10,000 – $20,000 / ₦10,000,000 – ₦20,000,000">$10,000 – $20,000 / ₦10,000,000 – ₦20,000,000</option>
+                        <option value="$20,000+ / ₦20,000,000+">$20,000+ / ₦20,000,000+ (High-Ticket Flagship)</option>
+                        <option value="Custom / Undecided">Custom / Undecided</option>
                       </select>
                     </div>
                   </div>

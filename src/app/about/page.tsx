@@ -2,30 +2,40 @@
 
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Footer from '@/components/ui/Footer';
-import { TEAM } from '@/content/team';
 import { STUDIO_INFO } from '@/content/studio';
+import { ArrowRight } from 'lucide-react';
 
-function TeamCard({ member }: { member: typeof TEAM[0] }) {
-  return (
-    <div className="w-full bg-white border border-[#1C120C] shadow-[8px_8px_24px_rgba(28,18,12,0.12)] flex flex-col rounded-none overflow-hidden">
-      <div className="relative w-full aspect-[4/5] overflow-hidden bg-gray-100">
-        <Image
-          src={member.image}
-          alt={member.name}
-          fill
-          className="object-cover grayscale transition-all duration-700 hover:grayscale-0"
-          sizes="(max-width: 768px) 100vw, 400px"
-        />
-      </div>
-      <div className="border-t border-[#1C120C] py-5 px-4 text-center">
-        <h3 className="text-xl font-normal text-[#1C120C] mb-1">{member.name}</h3>
-        <p className="text-sm font-normal text-[#1C120C]/70 tracking-wide">{member.role}</p>
-      </div>
-    </div>
-  );
-}
+// Core capabilities we highlight without full team roster
+const CAPABILITIES = [
+  {
+    label: 'Web Design & Art Direction',
+    desc: 'Editorial UI/UX, typography systems, interactive Figma prototypes, and mobile-first conversion design.',
+    accent: '#FF4D4D',
+  },
+  {
+    label: 'Web Development & Engineering',
+    desc: 'Next.js 15, TypeScript, Tailwind CSS v4, Framer Motion, Lenis — production-grade code at every layer.',
+    accent: '#25D366',
+  },
+  {
+    label: 'Bespoke Editorial Illustration',
+    desc: 'Original digital painting, editorial hero artworks, character design, and custom iconography systems.',
+    accent: '#EC7320',
+  },
+  {
+    label: 'Occasional 3D Design & Motion',
+    desc: 'Blender CGI, tactile material simulation, WebGL product showcases, and interactive Three.js scenes.',
+    accent: '#3897F0',
+  },
+  {
+    label: 'Proprietary Digital Products',
+    desc: 'We incubate our own software. Hachi — our shared grocery coordination PWA — is proof of our full-stack product capability.',
+    accent: '#B264F4',
+  },
+];
 
 function renderBrandLogo(client: string) {
   if (client.includes('Ountodun')) {
@@ -36,11 +46,11 @@ function renderBrandLogo(client: string) {
       </div>
     );
   }
-  if (client.includes('FAËM')) {
+  if (client.includes('FAËM') || client.includes('Faem')) {
     return (
       <div className="text-center font-serif">
-        <div className="font-editorial italic text-3xl text-[#1C120C] tracking-wide leading-none">FAËM</div>
-        <div className="font-sans font-light tracking-[0.3em] text-[9px] uppercase text-[#1C120C]/50 mt-1">RECORDS</div>
+        <div className="font-editorial italic text-3xl text-[#1C120C] tracking-wide leading-none">FĀËM</div>
+        <div className="font-sans font-light tracking-[0.3em] text-[9px] uppercase text-[#1C120C]/50 mt-1">DUO / UNIVERSE</div>
       </div>
     );
   }
@@ -55,7 +65,7 @@ function renderBrandLogo(client: string) {
     return (
       <div className="text-center font-sans">
         <div className="font-black tracking-tight text-xl uppercase text-[#1C120C]">HACHI</div>
-        <div className="font-sans font-light tracking-[0.2em] text-[9px] uppercase text-[#1C120C]/60">TECHNOLOGIES</div>
+        <div className="font-sans font-light tracking-[0.2em] text-[9px] uppercase text-[#1C120C]/60">GROCERY PWA</div>
       </div>
     );
   }
@@ -68,9 +78,7 @@ function renderBrandLogo(client: string) {
     );
   }
   return (
-    <div className="text-center text-xs font-mono uppercase tracking-widest text-[#1C120C]">
-      {client}
-    </div>
+    <div className="text-center text-xs font-mono uppercase tracking-widest text-[#1C120C]">{client}</div>
   );
 }
 
@@ -96,90 +104,75 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div className="pt-32 pb-16 px-6 md:px-12 bg-[#F5EAD8] text-[#1C120C] min-h-screen">
+    <div className="pt-28 sm:pt-32 pb-16 px-6 md:px-12 bg-[#F5EAD8] text-[#1C120C] min-h-screen">
       <div className="max-w-7xl mx-auto">
-        {/* Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-6xl sm:text-8xl md:text-9xl font-normal tracking-tight mb-8"
-        >
-          About Us
-        </motion.h1>
 
-        {/* Manifesto Paragraphs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="space-y-6 text-base sm:text-lg font-light leading-relaxed max-w-4xl opacity-90 mb-24"
-        >
-          {STUDIO_INFO.aboutText.map((p, idx) => (
-            <p key={idx}>{p}</p>
-          ))}
-        </motion.div>
+        {/* ── Page Header ── */}
+        <div className="mb-20 sm:mb-28">
+          <span className="font-mono text-xs uppercase tracking-widest text-[#FF4D4D] block mb-4">
+            Studio Ayo — Est. 2024
+          </span>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl sm:text-7xl md:text-9xl font-normal tracking-tight mb-10 leading-tight"
+          >
+            About the Studio
+          </motion.h1>
 
-        {/* Team alternating grid */}
-        <div className="flex flex-col gap-24 md:gap-36 mb-28">
-          {TEAM.map((member, index) => {
-            const isEven = index % 2 === 0;
-            return (
-              <motion.div
-                key={member.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.8 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 lg:gap-24 items-center"
-              >
-                {/* Card Container */}
-                <div
-                  className={`w-full max-w-[340px] mx-auto ${
-                    isEven ? 'md:ml-0 md:mr-auto' : 'md:mr-0 md:ml-auto md:order-2'
-                  }`}
-                >
-                  <TeamCard member={member} />
-                </div>
-
-                {/* Bio Container */}
-                <div
-                  className={`text-left max-w-[400px] mx-auto ${
-                    isEven ? 'md:ml-0 md:mr-auto' : 'md:mr-0 md:ml-auto md:order-1'
-                  }`}
-                >
-                  <p className="text-lg md:text-xl font-light leading-relaxed text-[#1C120C] opacity-90 mb-6">
-                    {member.bio}
-                  </p>
-                  
-                  {member.skills && member.skills.length > 0 && (
-                    <div className="pt-6 border-t border-[#1C120C]/15">
-                      <h4 className="text-xs font-mono uppercase tracking-widest text-[#1C120C]/60 mb-3">
-                        Expertise
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {member.skills.map((skill) => (
-                          <span
-                            key={skill}
-                            className="text-xs font-normal px-3 py-1 bg-white border border-[#1C120C] text-[#1C120C] shadow-[2px_2px_0px_rgba(28,18,12,1)] tracking-wide"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            );
-          })}
+          {/* Studio Manifesto */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 text-base sm:text-lg font-light leading-relaxed opacity-90 max-w-5xl"
+          >
+            {STUDIO_INFO.aboutText.map((p, idx) => (
+              <p key={idx}>{p}</p>
+            ))}
+          </motion.div>
         </div>
 
-        {/* Trusted By Section */}
-        <section className="py-16 border-t border-[#1C120C]/15 mb-16 overflow-hidden">
-          <h2 className="text-4xl sm:text-5xl font-normal tracking-tight mb-12">
-            Trusted By:
-          </h2>
+        {/* ── Core Capabilities ── */}
+        <section className="mb-28 sm:mb-36">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 pb-6 border-b border-[#1C120C]/15">
+            <h2 className="text-4xl sm:text-6xl font-normal tracking-tight">What We Do</h2>
+            <p className="text-sm text-[#1C120C]/65 font-light max-w-xs leading-relaxed">
+              Focused strengths. No agency bloat. Just the disciplines we excel at.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {CAPABILITIES.map((cap, idx) => (
+              <motion.div
+                key={cap.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.07 }}
+                className="p-7 bg-white border border-[#1C120C]/10 shadow-[4px_4px_0_rgba(28,18,12,0.06)] hover:shadow-[8px_8px_0_rgba(28,18,12,0.1)] transition-shadow"
+              >
+                <div
+                  className="w-2 h-2 rounded-full mb-5"
+                  style={{ background: cap.accent }}
+                />
+                <h3 className="text-lg font-medium text-[#1C120C] mb-3 leading-tight">{cap.label}</h3>
+                <p className="text-sm text-[#1C120C]/70 font-light leading-relaxed">{cap.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Trusted By Section ── */}
+        <section className="py-16 border-t border-[#1C120C]/15 mb-20 overflow-hidden">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+            <h2 className="text-4xl sm:text-5xl font-normal tracking-tight">Trusted By</h2>
+            <span className="text-xs font-mono text-[#1C120C]/50 uppercase tracking-widest">
+              Selected Clients & Partners
+            </span>
+          </div>
+
           <div className="relative w-full">
             <motion.div
               ref={carouselRef}
@@ -188,7 +181,7 @@ export default function AboutPage() {
               <motion.div
                 drag="x"
                 dragConstraints={{ right: 0, left: -width }}
-                className="flex gap-8 py-4 px-2 select-none w-max"
+                className="flex gap-6 py-4 px-2 select-none w-max"
               >
                 {duplicatedClients.map((client, idx) => (
                   <motion.div
@@ -204,10 +197,58 @@ export default function AboutPage() {
             </motion.div>
           </div>
         </section>
+
+        {/* ── Studio Ethos / Quick Stats ── */}
+        <section className="mb-28 grid grid-cols-2 sm:grid-cols-4 gap-6 py-16 border-t border-[#1C120C]/15">
+          <div className="flex flex-col gap-1">
+            <span className="text-4xl sm:text-5xl font-light text-[#1C120C]">2024</span>
+            <span className="text-xs font-mono uppercase tracking-wider text-[#1C120C]/55">Founded</span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <span className="text-4xl sm:text-5xl font-light text-[#1C120C]">Lagos</span>
+            <span className="text-xs font-mono uppercase tracking-wider text-[#1C120C]/55">HQ</span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <span className="text-4xl sm:text-5xl font-light text-[#1C120C]">Global</span>
+            <span className="text-xs font-mono uppercase tracking-wider text-[#1C120C]/55">Client Reach</span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <span className="text-4xl sm:text-5xl font-light text-[#1C120C]">4</span>
+            <span className="text-xs font-mono uppercase tracking-wider text-[#1C120C]/55">Core Disciplines</span>
+          </div>
+        </section>
+
+        {/* ── CTA ── */}
+        <section className="mb-16">
+          <div className="p-10 sm:p-16 bg-[#1C120C] text-[#F5EAD8] flex flex-col md:flex-row md:items-center justify-between gap-8">
+            <div className="max-w-xl">
+              <h2 className="text-3xl sm:text-5xl font-normal tracking-tight mb-4 leading-tight">
+                Let&apos;s build your digital flagship.
+              </h2>
+              <p className="text-base text-[#F5EAD8]/70 font-light leading-relaxed">
+                We partner with ambitious brands to design and engineer websites that command authority and convert visitors into clients.
+              </p>
+            </div>
+            <div className="flex flex-col gap-4">
+              <Link
+                href="/contact"
+                className="px-8 py-4 bg-[#FF4D4D] hover:bg-white hover:text-[#1C120C] text-white font-mono text-xs uppercase tracking-widest font-semibold transition-all text-center flex items-center justify-center gap-2"
+              >
+                Start a Project <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/works"
+                className="px-8 py-4 border border-[#F5EAD8]/30 hover:border-[#F5EAD8] text-[#F5EAD8] hover:bg-[#F5EAD8]/10 font-mono text-xs uppercase tracking-widest transition-all text-center"
+              >
+                View Our Work
+              </Link>
+            </div>
+          </div>
+        </section>
+
       </div>
 
       <Footer />
     </div>
   );
 }
-

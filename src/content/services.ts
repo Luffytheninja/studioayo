@@ -2,259 +2,208 @@ import { ServiceCategory } from '@/types';
 
 export const SERVICES: ServiceCategory[] = [
   {
-    id: 'brand-identity',
-    title: 'Brand Identity',
-    description: 'Distinctive identities built for businesses that want to be remembered.',
-    bestForLabel: 'Perfect for',
-    bestForItems: ['startups', 'hospitality', 'fashion', 'architecture', 'beauty', 'culture', 'premium SMEs'],
-    includesLabel: 'Includes',
+    id: 'web-design',
+    title: 'Web Design & Art Direction',
+    description: 'High-converting, editorial web design crafted to elevate perception and turn visitors into loyal clients.',
+    bestForLabel: 'Ideal For',
+    bestForItems: [
+      'Brand Flagship Websites',
+      'Luxury & Culture E-Commerce',
+      'High-Growth Startups',
+      'Editorial Publications',
+      'Creative Studios & Portfolios',
+    ],
+    includesLabel: 'What We Deliver',
     includesItems: [
-      'Brand Strategy',
-      'Naming Support (optional)',
-      'Logo System',
-      'Typography',
-      'Color System',
-      'Visual Language',
-      'Brand Guidelines',
-      'Social Templates',
-      'Stationery',
-      'Packaging Direction',
-      'Art Direction'
+      'UI/UX Discovery & Research',
+      'Strategic Information Architecture',
+      'Interactive Figma Prototyping',
+      'Editorial Typography Systems',
+      'Mobile-First Design Systems',
+      'Conversion Rate Optimization',
+      'Responsive Interaction Specs',
     ],
     deliverablesLabel: 'Deliverables',
     deliverablesItems: [
-      'Complete Logo Suite',
-      'Brand Guidelines',
-      'Social Media Assets',
-      'Print Assets',
-      'Production Files'
+      'Complete Figma Design File',
+      'Interactive Clickable Prototype',
+      'Responsive UI Component Library',
+      'Asset Suite (SVG, WebP, Typography)',
+      'Design Token Specifications',
     ],
     pricing: [
       {
-        label: 'Starting from',
+        label: 'Project Investment',
         ranges: [
-          { currency: 'NGN', amount: '₦250,000 - ₦2,500,000' },
-          { currency: 'USD', amount: '$250 - $3,000' }
-        ]
-      }
-    ],
-    signatureImage: '/media/images/ountodun-thumbnail.png',
-    signatureProject: 'ountodun'
-  },
-  {
-    id: 'web-design',
-    title: 'Websites & Digital Experiences',
-    description: 'Beautiful websites engineered to turn visitors into customers.',
-    bestForLabel: 'Ideal For',
-    bestForItems: ['Company Websites', 'Creative Portfolios', 'Landing Pages', 'Shopify Stores', 'Editorial Websites'],
-    includesLabel: 'Includes',
-    includesItems: [
-      'UX Research',
-      'Information Architecture',
-      'Wireframes',
-      'UI Design',
-      'Motion Design',
-      'Responsive Design',
-      'CMS Integration',
-      'Development',
-      'SEO Fundamentals'
-    ],
-    pricing: [
-      {
-        label: 'Starting from',
-        ranges: [
-          { currency: 'NGN', amount: '₦450,000 - ₦5,500,000' },
-          { currency: 'USD', amount: '$500 - $6,000' }
-        ]
-      }
+          { currency: 'USD', amount: '$2,500 – $8,000' },
+          { currency: 'NGN', amount: '₦2,500,000 – ₦8,000,000' },
+        ],
+      },
     ],
     signatureImage: '/media/images/faem-thumbnail.png',
-    signatureProject: 'faem'
+    signatureProject: 'faem',
   },
   {
-    id: 'ui-ux-design',
-    title: 'Product Design (UI/UX)',
-    description: 'Digital products designed around people.',
-    bestForLabel: 'Products',
-    bestForItems: ['Mobile Apps', 'Web Apps', 'SaaS Platforms', 'Dashboards', 'Internal Tools'],
-    includesLabel: 'Includes',
-    includesItems: [
-      'Product Discovery',
-      'User Research',
-      'UX Strategy',
-      'User Flows',
-      'Wireframes',
-      'Design Systems',
-      'High Fidelity UI',
-      'Interactive Prototypes',
-      'Developer Handoff'
-    ],
-    pricing: [
-      {
-        label: 'Starting from',
-        ranges: [
-          { currency: 'NGN', amount: '₦700,000 - ₦8,000,000' },
-          { currency: 'USD', amount: '$800 - $10,000' }
-        ]
-      }
-    ],
-    signatureImage: '/media/images/hachi-thumbnail.png',
-    signatureProject: 'hachi'
-  },
-  {
-    id: 'creative-direction',
-    title: 'Creative Direction',
-    description: 'Creating the visual language before anything gets made.',
-    bestForLabel: 'Perfect for',
-    bestForItems: ['campaigns', 'launches', 'fashion collections', 'music projects', 'exhibitions', 'luxury brands'],
-    includesLabel: 'Includes',
-    includesItems: [
-      'Creative Strategy',
-      'Campaign Concepts',
-      'Story Development',
-      'Moodboards',
-      'Visual Direction',
-      'Production Planning',
-      'Shoot Supervision',
-      'Art Direction'
-    ],
-    pricing: [
-      {
-        label: 'Starting from',
-        ranges: [
-          { currency: 'NGN', amount: '₦300,000 - ₦3,500,000' },
-          { currency: 'USD', amount: '$350 - $4,000' }
-        ]
-      }
-    ],
-    signatureImage: '/media/images/ountodun-banner.png',
-    signatureProject: 'ountodun'
-  },
-  {
-    id: 'photography-film',
-    title: 'Photography & Film',
-    description: 'Premium imagery crafted to elevate perception.',
-    bestForLabel: 'Services',
+    id: 'web-development',
+    title: 'Web Development & Creative Engineering',
+    description: 'Bespoke, production-grade web applications engineered for sub-second speeds, fluid 60fps animations, and maximum search visibility.',
+    bestForLabel: 'Technologies',
     bestForItems: [
-      'Brand Photography',
-      'Product Photography',
-      'Fashion Campaigns',
-      'Editorial Photography',
-      'Architecture',
-      'Lifestyle',
-      'Commercial Films',
-      'Brand Documentaries',
-      'Product Videos',
-      'Launch Films',
-      'Social Content'
+      'Next.js 15 & React 19',
+      'TypeScript Strict Architecture',
+      'Tailwind CSS v4 Styling',
+      'Framer Motion & GSAP Physics',
+      'Headless Shopify & CMS',
     ],
-    includesLabel: 'Expertise',
+    includesLabel: 'Technical Standards',
     includesItems: [
-      'Commercial Photography',
-      'Fashion Photography',
-      'Brand Campaigns',
-      'Cinematography',
-      'Creative Direction',
-      'Video Editing'
+      'Clean Modular TypeScript Codebase',
+      'Lenis Smooth Scroll & Kinetic Motion',
+      'Pixel-Perfect Responsive QA (Mobile/Tablet/PC)',
+      'Lighthouse 95+ Performance Scores',
+      'Full Technical SEO & OpenGraph Setup',
+      'W3C Accessibility Compliance',
+      'Zero-Downtime Deployment Setup',
     ],
     pricing: [
       {
-        label: 'Photography',
+        label: 'Project Investment',
         ranges: [
-          { currency: 'NGN', amount: '₦200,000 - ₦2,500,000' },
-          { currency: 'USD', amount: '$250 - $3,000' }
-        ]
+          { currency: 'USD', amount: '$3,500 – $10,000+' },
+          { currency: 'NGN', amount: '₦3,500,000 – ₦10,000,000+' },
+        ],
       },
-      {
-        label: 'Film Production',
-        ranges: [
-          { currency: 'NGN', amount: '₦600,000 - ₦10,000,000+' },
-          { currency: 'USD', amount: '$700 - $12,000+' }
-        ]
-      }
     ],
     signatureImage: '/media/images/a-century-flame-thumbnail.png',
-    signatureProject: 'a-century-flame'
+    signatureProject: 'a-century-flame',
   },
   {
-    id: 'motion-design-3d',
-    title: 'Motion Design & 3D',
-    description: 'Visuals impossible to ignore. High-end motion graphics, CGI, and product visualization for launches, marketing, and storytelling.',
-    bestForLabel: 'Services',
+    id: 'illustration',
+    title: 'Bespoke Illustration & Brand Visuals',
+    description: 'Original artwork, editorial illustrations, and narrative visuals that give your digital experience an unmistakable human soul.',
+    bestForLabel: 'Creative Mediums',
     bestForItems: [
-      'Product Visualization',
-      'CGI',
-      'Motion Graphics',
-      'Logo Animation',
-      '3D Rendering',
-      'Interactive Assets',
-      'Product Animation'
+      'Editorial Hero Illustrations',
+      'Digital Painting & Fine Art',
+      'Packaging & Print Visuals',
+      'Custom Iconography Suites',
+      'Brand Mascot & World-building',
+    ],
+    includesLabel: 'Creative Process',
+    includesItems: [
+      'Concept Sketches & Storyboarding',
+      'Custom Color Palette Exploration',
+      'High-Resolution Digital Art Creation',
+      'Scalable Vector Asset Delivery',
+      'Web-Optimized Image Integration',
     ],
     pricing: [
       {
-        label: 'Starting from',
+        label: 'Project Investment',
         ranges: [
-          { currency: 'NGN', amount: '₦250,000 - ₦4,500,000' },
-          { currency: 'USD', amount: '$300 - $5,000' }
-        ]
-      }
+          { currency: 'USD', amount: '$1,000 – $3,500' },
+          { currency: 'NGN', amount: '₦1,000,000 – ₦3,500,000' },
+        ],
+      },
+    ],
+    signatureImage: '/media/by-alex/hanoi-city-illustration.PNG',
+    signatureProject: 'ountodun',
+  },
+  {
+    id: '3d-design',
+    title: 'Occasional 3D Design & Spatial Motion',
+    description: 'Tactile 3D assets, physical material simulations, and interactive WebGL experiences that make your digital presence tangible.',
+    bestForLabel: 'Specializations',
+    bestForItems: [
+      'Interactive 3D Web Embeds (Three.js/R3F)',
+      'Photorealistic Product CGI',
+      'Tactile Material Simulation',
+      'Kinetic Micro-Animations',
+      'Sculptural Concept Visualization',
+    ],
+    includesLabel: 'Production Pipeline',
+    includesItems: [
+      '3D Poly Modeling & Topology',
+      'Lighting & Shader Architecture',
+      'Blender Scene Simulation',
+      'GLB / WebGL Asset Optimization',
+      'Interactive Web Canvas Integration',
+    ],
+    pricing: [
+      {
+        label: 'Project Investment',
+        ranges: [
+          { currency: 'USD', amount: '$1,500 – $5,000' },
+          { currency: 'NGN', amount: '₦1,500,000 – ₦5,000,000' },
+        ],
+      },
     ],
     signatureImage: '/media/images/natural-american-spirit-thumbnail.png',
-    signatureProject: 'natural-american-spirit'
+    signatureProject: 'natural-american-spirit',
   },
   {
-    id: 'illustration-graphic-art',
-    title: 'Illustration & Graphic Art',
-    description: 'Original artwork that gives brands personality. From editorial illustration to campaign artwork, every piece is created specifically for your project.',
-    bestForLabel: 'Services',
+    id: 'digital-products',
+    title: 'Proprietary Digital Products & Ventures',
+    description: 'We build digital products for specific modern audiences. Led by our proprietary grocery coordination PWA Hachi, we take software from zero to launch.',
+    bestForLabel: 'Product Focus',
     bestForItems: [
-      'Editorial Illustration',
-      'Packaging Illustration',
-      'Album Artwork',
-      'Book Covers',
-      'Poster Design',
-      'Character Design',
-      'Digital Painting',
-      'Murals',
-      'Campaign Artwork'
+      'Progressive Web Apps (PWAs)',
+      'Mobile-First Shared Systems',
+      'Specialized Consumer Tools',
+      'SaaS Application Interfaces',
+      'Venture Design & Incubation',
+    ],
+    includesLabel: 'Venture Capabilities',
+    includesItems: [
+      'Product Strategy & Market Validation',
+      'Full End-to-End UI/UX Flows',
+      'Design System Architecture',
+      'Mobile-Optimized Frontend Engineering',
+      'Security-First Interface Design',
+      'Rapid Iteration & User Testing',
     ],
     pricing: [
       {
-        label: 'Starting from',
+        label: 'Venture Investment',
         ranges: [
-          { currency: 'NGN', amount: '₦80,000 - ₦1,500,000' },
-          { currency: 'USD', amount: '$100 - $2,000' }
-        ]
-      }
+          { currency: 'USD', amount: '$6,000 – $20,000+' },
+          { currency: 'NGN', amount: '₦6,000,000 – ₦20,000,000+' },
+        ],
+      },
     ],
-    signatureImage: '/media/images/ountodun-shopping-bag.png',
-    signatureProject: 'ountodun'
+    signatureImage: '/media/images/hachi-thumbnail.png',
+    signatureProject: 'hachi',
   },
   {
-    id: 'creative-retainers',
-    title: 'Creative Retainers',
-    description: 'Your remote creative department. Ideal for businesses that need continuous creative support without building an in-house team.',
-    bestForLabel: 'Monthly Support',
+    id: 'studio-retainer',
+    title: 'Dedicated Studio Retainer',
+    description: 'Your remote senior digital web studio on monthly standby. Perfect for growing brands and funded startups needing continuous elite execution.',
+    bestForLabel: 'Monthly Partnership',
     bestForItems: [
-      'Brand Management',
-      'Social Media Design',
-      'Marketing Campaigns',
-      'Website Updates',
-      'Product Design',
-      'Presentation Design',
-      'Motion Graphics',
-      'Creative Consulting'
+      'Ongoing Web Feature Rollouts',
+      'Continuous UI/UX Evolution',
+      'Custom Illustration Drops',
+      'Performance & Conversion Tuning',
+      'Direct Studio Communication',
+    ],
+    includesLabel: 'Retainer Scope',
+    includesItems: [
+      'Dedicated Weekly Sprint Hours',
+      'Guaranteed Fast Turnaround',
+      'Direct Slack / WhatsApp Channel',
+      'Priority Design & Dev Queue',
+      'Monthly Strategic Roadmapping',
     ],
     pricing: [
       {
-        label: 'Starting from',
+        label: 'Monthly Retainer',
         ranges: [
-          { currency: 'NGN', amount: '₦400,000 - ₦3,500,000 / month' },
-          { currency: 'USD', amount: '$500 - $4,000 / month' }
-        ]
-      }
+          { currency: 'USD', amount: '$2,500 – $6,000 / month' },
+          { currency: 'NGN', amount: '₦2,500,000 – ₦6,000,000 / month' },
+        ],
+      },
     ],
     signatureImage: '/media/images/hachi-login-screen.png',
-    signatureProject: 'hachi'
-  }
+    signatureProject: 'hachi',
+  },
 ];

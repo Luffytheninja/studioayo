@@ -6,13 +6,25 @@ import CustomCursor from '@/components/ui/CustomCursor';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://studioayo.com'),
-  title: 'Studio Ayo — Multidisciplinary Digital Design Studio',
+  title: 'Studio Ayo — Digital Web Design Studio · Lagos',
   description:
-    'Designing products, brands & digital experiences that people remember. Boutique multidisciplinary digital design studio based in Lagos.',
-  keywords: ['design studio', 'branding', 'web design', 'UI UX', 'digital experience', 'Studio Ayo'],
+    'Studio Ayo is an independent digital studio designing and engineering beautiful, high-converting websites for ambitious brands. Web Design, Web Development, Editorial Illustration & 3D. Based in Lagos, working worldwide.',
+  keywords: [
+    'web design studio Lagos',
+    'web development Nigeria',
+    'digital design studio',
+    'UI UX design agency',
+    'Studio Ayo',
+    'Next.js web design',
+    'brand website design',
+    'editorial illustration',
+    'bespoke website design',
+    'Faemous web design',
+    'Hachi PWA',
+  ],
   openGraph: {
-    title: 'Studio Ayo — Multidisciplinary Digital Design Studio',
-    description: 'Designing products, brands & digital experiences that people remember.',
+    title: 'Studio Ayo — Digital Web Design Studio',
+    description: 'Designing & engineering beautiful, meaningful websites for ambitious brands. Lagos · Worldwide.',
     url: 'https://studioayo.com',
     siteName: 'Studio Ayo',
     images: [
@@ -20,7 +32,7 @@ export const metadata: Metadata = {
         url: '/media/images/hero-main-background.png',
         width: 1200,
         height: 630,
-        alt: 'Studio Ayo',
+        alt: 'Studio Ayo — Digital Web Design Studio',
       },
     ],
     locale: 'en_US',
@@ -28,8 +40,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Studio Ayo',
-    description: 'Designing products, brands & digital experiences that people remember.',
+    title: 'Studio Ayo — Digital Web Design Studio',
+    description: 'Designing & engineering beautiful, meaningful websites for ambitious brands. Lagos · Worldwide.',
     images: ['/media/images/hero-main-background.png'],
   },
 };
